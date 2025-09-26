@@ -1,12 +1,13 @@
 import React from 'react'
-import Navbar from './components/Navbar'
-import Banner from './components/Banner'
+import Home from './home/Home'
+import Course from './components/Course'
+
 
 const App = () => {
   return (
     <>
-    <Navbar/>
-    <Banner/>
+    <Home/>
+    <Course/>
     </>
   )
 }
