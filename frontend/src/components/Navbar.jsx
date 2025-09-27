@@ -11,8 +11,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <h1 className="text-xl font-bold text-gray-900">Book Store</h1>
           <div className="hidden md:flex items-center gap-6">
-            <a href="#" className="text-gray-700 hover:text-black">Home</a>
-            <a href="#" className="text-gray-700 hover:text-black">Course</a>
+            <a href="/" className="text-gray-700 hover:text-black">Home</a>
+            <a href="/course" className="text-gray-700 hover:text-black">Course</a>
             <a href="#" className="text-gray-700 hover:text-black">Contact</a>
             <a href="#" className="text-gray-700 hover:text-black">About</a>
             <div className="relative">
@@ -41,8 +41,8 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <div className="px-4 py-3 flex flex-col gap-3">
-            <a href="#" className="text-gray-700 hover:text-black">Home</a>
-            <a href="#" className="text-gray-700 hover:text-black">Course</a>
+            <a href="/" className="text-gray-700 hover:text-black">Home</a>
+            <a href="/course" className="text-gray-700 hover:text-black">Course</a>
             <a href="#" className="text-gray-700 hover:text-black">Contact</a>
             <a href="#" className="text-gray-700 hover:text-black">About</a>
 
