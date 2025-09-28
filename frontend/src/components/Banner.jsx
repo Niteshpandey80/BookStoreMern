@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiMail } from "react-icons/fi";
-import img from "../../public/Banner.png";
+import img from "../assets/Banner.png";
 
 const Banner = () => {
   const [sinput, setSinput] = useState("");
