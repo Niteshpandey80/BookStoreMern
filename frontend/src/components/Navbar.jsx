@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { FiSearch, FiMenu, FiX } from "react-icons/fi";
+import Login from "./Login";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
+  const [showLogin  , setShowLogin] = useState(false)
 
   return (
+    <>
     <nav className="bg-gray-900 shadow-md fixed w-full top-0 left-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -27,7 +30,7 @@ const Navbar = () => {
               <FiSearch className="absolute left-2 top-2 text-white" />
             </div>
 
-            <button className="bg-white text-black px-4 py-1 rounded-lg">
+            <button className="bg-white text-black px-4 py-1 rounded-lg" onClick={()=>setShowLogin(true)}>
               Login
             </button>
           </div>
@@ -59,13 +62,16 @@ const Navbar = () => {
               <FiSearch className="absolute left-2 top-2 text-white" />
             </div>
 
-            <button className="bg-white text-black px-4 py-1 rounded-lg w-fit">
+            <button 
+            onClick={()=>setShowLogin(true)} className="bg-white text-black px-4 py-1 rounded-lg w-fit">
               Login
             </button>
           </div>
         </div>
       )}
     </nav>
+    {showLogin && <Login onClose={()=>setShowLogin(false)} />}
+    </>
   );
 };
 
