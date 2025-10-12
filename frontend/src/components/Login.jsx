@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Login = ({onClose}) => {
   return (
@@ -23,7 +24,7 @@ const Login = ({onClose}) => {
           <button type='submit' className='bg-pink-500 text-white py-2 rounded-md transition'>Login</button>
         </form>
         <p className='text-center text-sm text-gray-600 mt-4'> Not registered?{" "}
-          <a href="#" className='text-pink-500 hover:underline'>Signup</a>
+          <Link to='/signup' className='text-pink-500 hover:underline'>Signup</Link>
         </p>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiMail } from "react-icons/fi";
-import img from "../assets/Banner.png";
+import img from "../assets/books.png";
 
 const Banner = () => {
   const [sinput, setSinput] = useState("");
@@ -10,7 +10,7 @@ const Banner = () => {
       <div className="w-full md:w-1/2 flex flex-col justify-center space-y-6">
         <h1 className="text-gray-900 text-3xl md:text-4xl lg:text-5xl font-bold leading-snug mt-[30px] md:mt-0 ">
           Hello, welcome here to learn{" "}
-          <span className="text-[#DA07B9]">new everyday!!</span>
+          <span className="text-[#8681FF]">new everyday!!</span>
         </h1>
         <p className="text-gray-600 text-base md:text-lg lg:text-xl leading-relaxed">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -28,7 +28,7 @@ const Banner = () => {
             onChange={(e) => setSinput(e.target.value)}
           />
         </div>
-        <button className="bg-[#DA07B9] text-white px-6 py-2 rounded-lg shadow-md hover:bg-[#b20696] transition w-fit">
+        <button className="bg-[#8681FF] text-white px-6 py-2 rounded-lg shadow-md hover:bg-[#8681FF] transition w-fit">
           Get Started
         </button>
         <div>
