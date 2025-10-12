@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Login from "./Login";
+import { useForm } from "react-hook-form"
 
 const SignUp = () => {
   const [showLogin , setShowLogin] = useState(false)
+  const {
+      register,
+      handleSubmit,
+      formState: { errors },
+    } = useForm()
+  
+    const onSubmit = (data) => console.log(data)
   return (
     <>
     <div className="flex items-center justify-center h-screen w-screen bg-gradient-to-br from-pink-100 via-pink-200 to-pink-300">
@@ -11,30 +19,36 @@ const SignUp = () => {
         <h1 className="text-3xl font-bold text-black mb-6">Create Account</h1>
         <Link to="/"className="absolute right-4 top-3 bg-pink-500 hover:bg-pink-600 text-white rounded-full h-8 w-8 flex items-center justify-center text-2xl shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-pink-300/50"> &times;</Link>
 
-        <form className="w-full flex flex-col gap-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col gap-4">
           <div>
             <label className="block text-black-800 text-sm mb-1">Full Name</label>
             <input
               type="text"
-              placeholder="Enter your name"
+              placeholder="Enter your name" 
+              {...register("text", { required: true })}
               className="w-full px-4 py-2 rounded-lg border border-black-300 focus:outline-none focus:ring-2 focus:ring-pink-400"
             />
+            {errors.text && <span className='text-red-500 text-sm'>This field is required</span>}
           </div>
           <div>
             <label className="block text-black-800 text-sm mb-1">Email</label>
             <input
               type="email"
               placeholder="Enter your email"
+              {...register("email", { required: true })}
               className="w-full px-4 py-2 rounded-lg border border-black-300 focus:outline-none focus:ring-2 focus:ring-pink-400"
             />
+            {errors.email && <span className='text-red-500 text-sm'>This field is required</span>}
           </div>
           <div>
             <label className="block text-black-800 text-sm mb-1">Password</label>
             <input
               type="password"
               placeholder="Enter your password"
+              {...register("password", { required: true })}
               className="w-full px-4 py-2 rounded-lg border border-black-300 focus:outline-none focus:ring-2 focus:ring-pink-400"
             />
+            {errors.password && <span className='text-red-500 text-sm'>This field is required</span>}
           </div>
           <button
             type="submit"
