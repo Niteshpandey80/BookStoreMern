@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
+const bookRoute = require('./routes/bookRoutes.js')
 
 const app = express();
 
@@ -11,9 +12,9 @@ const MONG = process.env.MongoDBURI ;
 mongoose.connect(MONG)
 .then(() => console.log("✅ Connected to MongoDB")).catch((err) => console.error("❌ MongoDB connection error:", err));
 
-app.get('/' , (req,res)=>{
-    res.send("Hello Bro")
-})
+//defining routes 
+app.use('/book' , bookRoute)
+
 app.listen(PORT , ()=>{
     console.log(`Runing on ${PORT}`); 
 })
