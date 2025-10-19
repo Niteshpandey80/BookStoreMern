@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from "react-hook-form"
+import axios from 'axios'
+import toast from 'react-hot-toast'
 
 const Login = ({onClose}) => {
   const {
@@ -8,9 +10,30 @@ const Login = ({onClose}) => {
     handleSubmit,
     formState: { errors },
   } = useForm()
-  // const axios.post added backend  hare 
 
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = async(data) => {
+    const userInfo = {
+      email: data.email,
+      password: data.password,
+    };
+
+    try {
+      const res = await axios.post("http://localhost:3000/user/login", userInfo);
+      console.log(res.data);
+
+      if (res.data) {
+        toast.success('Login Successfully');
+      }
+      localStorage.setItem('Users' , JSON.stringify(res.data.user  ))
+    } catch (err) {
+      console.log(err);
+      if (err.response && err.response.data && err.response.data.message) {
+        toast.error("Error: " + err.response.data.message);
+      } else {
+         toast.error("Somthing Want Wrong ");
+      }
+    }
+  }
   return (
     <div className='fixed inset-0 flex items-center justify-center backdrop-blur-sm z-50'>
       <div className='bg-white rounded-xl shadow-2xl w-96 p-6 relative'>
