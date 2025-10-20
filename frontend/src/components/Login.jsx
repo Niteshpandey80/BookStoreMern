@@ -23,6 +23,10 @@ const Login = ({onClose}) => {
 
       if (res.data) {
         toast.success('Login Successfully');
+         onClose();
+          setTimeout(() => {
+          window.location.reload();
+        }, 800);
       }
       localStorage.setItem('Users' , JSON.stringify(res.data.user  ))
     } catch (err) {
