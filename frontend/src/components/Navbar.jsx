@@ -3,6 +3,7 @@ import { FiSearch, FiMenu, FiX } from "react-icons/fi";
 import Login from "./Login";
 
 const Navbar = () => {
+  
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [showLogin  , setShowLogin] = useState(false)
