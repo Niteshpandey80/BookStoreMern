@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { FiSearch, FiMenu, FiX } from "react-icons/fi";
 import Login from "./Login";
+import { useAuth } from "../context/AuthProvider";
+import LogOut from "./LogOut";
 
 const Navbar = () => {
-  
+  const [authUser , setAuthUser] = useAuth();
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [showLogin  , setShowLogin] = useState(false)
@@ -31,9 +33,16 @@ const Navbar = () => {
               <FiSearch className="absolute left-2 top-2 text-white" />
             </div>
 
-            <button className="bg-white text-black px-4 py-1 rounded-lg" onClick={()=>setShowLogin(true)}>
-              Login
-            </button>
+            {authUser ? (
+                <LogOut /> 
+              ) : (
+                <button
+                  className="bg-white text-black px-4 py-1 rounded-lg"
+                  onClick={() => setShowLogin(true)}
+                >
+                  Login
+                </button>
+              )}
           </div>
 
           <div className="md:hidden flex items-center text-white">
@@ -63,10 +72,13 @@ const Navbar = () => {
               <FiSearch className="absolute left-2 top-2 text-white" />
             </div>
 
-            <button 
+            {
+              authUser ? <LogOut/> :
+              <button 
             onClick={()=>setShowLogin(true)} className="bg-white text-black px-4 py-1 rounded-lg w-fit">
               Login
             </button>
+            }
           </div>
         </div>
       )}
