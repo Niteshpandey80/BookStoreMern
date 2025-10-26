@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Login from "./Login";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 
 const SignUp = () => {
   const [showLogin, setShowLogin] = useState(false);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -26,15 +27,16 @@ const SignUp = () => {
       console.log(res.data);
 
       if (res.data) {
-        toast.success('SignUP Successfully');
+        toast.success("Sign Up Successfully 🎉");
+        localStorage.setItem("Users", JSON.stringify(res.data.user));
+        navigate("/", { replace: true });
       }
-      localStorage.setItem('Users' , JSON.stringify(res.data.user  ))
     } catch (err) {
       console.log(err);
       if (err.response && err.response.data && err.response.data.message) {
-       toast.error("Error: " + err.response.data.message);
+        toast.error("Error: " + err.response.data.message);
       } else {
-        alert("Something went wrong!");
+        toast.error("Something went wrong!");
       }
     }
   };
@@ -52,10 +54,7 @@ const SignUp = () => {
             &times;
           </Link>
 
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="w-full flex flex-col gap-4"
-          >
+          <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col gap-4">
             <div>
               <label className="block text-gray-800 text-sm mb-1">Full Name</label>
               <input
@@ -64,11 +63,7 @@ const SignUp = () => {
                 {...register("fullname", { required: true })}
                 className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400"
               />
-              {errors.fullname && (
-                <span className="text-red-500 text-sm">
-                  This field is required
-                </span>
-              )}
+              {errors.fullname && <span className="text-red-500 text-sm">This field is required</span>}
             </div>
 
             <div>
@@ -79,11 +74,7 @@ const SignUp = () => {
                 {...register("email", { required: true })}
                 className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400"
               />
-              {errors.email && (
-                <span className="text-red-500 text-sm">
-                  This field is required
-                </span>
-              )}
+              {errors.email && <span className="text-red-500 text-sm">This field is required</span>}
             </div>
 
             <div>
@@ -94,11 +85,7 @@ const SignUp = () => {
                 {...register("password", { required: true })}
                 className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400"
               />
-              {errors.password && (
-                <span className="text-red-500 text-sm">
-                  This field is required
-                </span>
-              )}
+              {errors.password && <span className="text-red-500 text-sm">This field is required</span>}
             </div>
 
             <button
