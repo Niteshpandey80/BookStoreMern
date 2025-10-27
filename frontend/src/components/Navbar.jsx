@@ -22,7 +22,7 @@ const Navbar = () => {
             <a href="/" className="text-white hover:text-gray-300">Home</a>
             <a href="/course" className="text-white hover:text-gray-300">Course</a>
             <a href="#" className="text-white hover:text-gray-300">Contact</a>
-            <a href="#" className="text-white hover:text-gray-300">About</a>
+            <a href="/addbooks" className="text-white hover:text-gray-300">Add Books</a>
 
             <div className="relative">
               <input

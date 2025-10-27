@@ -1,26 +1,32 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const dotenv = require('dotenv')
-const cors = require('cors')
-const bookRoute = require('./routes/bookRoutes.js')
-const userRoute = require('./routes/userRoutes.js')
+const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const cors = require('cors');
 
-const app = express();
+const bookRoute = require('./routes/bookRoutes');
+const userRoute = require('./routes/userRoutes'); // make sure this file exists
+
 dotenv.config();
+const app = express();
 
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT ; 
-const MONG = process.env.MongoDBURI ; 
+// Environment variables
+const PORT = process.env.PORT || 5000;
+const MONGO_URI = process.env.MongoDBURI;
 
-mongoose.connect(MONG)
-.then(() => console.log("✅ Connected to MongoDB")).catch((err) => console.error("❌ MongoDB connection error:", err));
+// MongoDB connection
+mongoose.connect(MONGO_URI)
+  .then(() => console.log("✅ Connected to MongoDB"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
-//defining routes 
-app.use('/book' , bookRoute)
-app.use('/user' , userRoute)
+// Routes
+app.use('/book', bookRoute);
+app.use('/user', userRoute);
 
-app.listen(PORT , ()=>{
-    console.log(`Runing on ${PORT}`); 
-})
+// Start server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});

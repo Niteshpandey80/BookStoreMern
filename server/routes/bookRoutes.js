@@ -1,8 +1,12 @@
 const express = require('express');
-const getBook = require('../controllers/booksContorllers.js'); // ✅ fixed import
+const { getBooks, addBook } = require('../controllers/booksContorllers');
 
 const router = express.Router();
 
-router.get('/', getBook);
+// GET all books
+router.get('/', getBooks);
+
+// ✅ POST new book
+router.post('/add', addBook);
 
 module.exports = router;
